@@ -49,4 +49,4 @@ Pour réaliser cette étape, nous allons créer un bot Discord qui permet d'envo
 
 ## Bonus:
 
-Le bot peut etre capable davoir des parametre, des score different en fonction des question des groupe etc, et meme denvoyer les resultat sur supabase pour les stocker definitivement.
+Le bot peut être capable d'avoir des paramètres, des scores différents en fonction des questions des groupes, etc... et même d'envoyer les résultats sur Supabase pour les stocker définitivement.
