@@ -1,43 +1,52 @@
 # Initiation aux Webhooks
 
-## Step 1: Webhook sur Discord
+Bienvenue à l'atelier d'initiation aux webhooks sur Discord ! Dans cet atelier, nous allons apprendre à créer un webhook Discord pour envoyer des messages et nous allons également créer un bot de quiz Discord en utilisant Python.
+
+## Étape 1: Création d'un Webhook Discord
 
 ### Préparation:
-- Utilisez le serveur Discord déjà créé: [Rejoindre le serveur](https://discord.gg/wCPz3p73).
-- Un canal spécifique, `step1`, est disponible pour la création de webhooks.
+- Pour commencer, rejoignez notre serveur Discord déjà créé: [Rejoindre le serveur](https://discord.gg/wCPz3p73).
+- Un canal spécifique, `quizz`, est disponible pour la création de webhooks.
 
 ### Création d'un Webhook Discord:
-1. **Accès au Canal `step1`:**
-   - Allez dans le canal `step1` sur le serveur Discord.
+1. **Accédez au Canal `quizz`:**
+   - Rendez-vous dans le canal `quizz` sur le serveur Discord.
 
 2. **Création du Webhook:**
    - Cliquez sur les paramètres du canal (icône d'engrenage à côté du nom du canal).
    - Choisissez `Intégrations` puis `Créer un Webhook`.
-   - Personnalisez votre Webhook (nom, icône) et copiez l'URL.
+   - Personnalisez votre Webhook en lui donnant un nom et une icône, puis copiez l'URL du webhook.
 
-3. **Configuration du Webhook GitHub:**
-   - Dans votre repo GitHub, accédez à `Settings` > `Webhooks`.
-   - Sélectionnez `Add Webhook` et collez l'URL du Webhook Discord.
-   - Configurez les événements à notifier.
+3. **GitHub Repository:**
+   - Vous pouvez trouver tous les fichiers dont vous avez besoin, y compris `DiscordQuizzBot.py`, dans notre dépôt GitHub: [GitHub Repository](https://github.com/PerrineCasbas/Initiation_Webhook?tab=readme-ov-file).
 
-## Step 2: Webhook sur Supabase
+## Étape 2: Utilisation de Python pour un Quiz Discord
 
-1. **Préparez votre compte Supabase:**
-   - Assurez-vous d'avoir un compte Supabase.
+Maintenant que vous avez créé un Webhook Discord et avez tout en main, nous pouvons commencer. Cependant, il est important de noter que pour créer un quiz interactif, nous devons avoir un bot Discord, car les webhooks ont des limitations en termes d'interaction avec les utilisateurs. Nous utiliserons donc principalement le bot pour gérer le quizz, mais nous utiliserons les webhooks pour envoyer des messages et afficher les questions et les réponses.
 
-2. **Créer des Tables:**
-   - `basic_info`: Contient `id_repository`, `name_repository`, `message`.
-   - `file_modified`: Contient `id` (auto-incrémenté), `modified_file`, `date`.
-   - /!\ Faites attention aux types de données.
+1. **Configuration du bot Discord:**
+   - Assurez-vous d'avoir Python installé sur votre système.
+   - Ouvrez le fichier `DiscordQuizzBot.py` fournis.
 
-3. **Créer une Edge Function:**
-   - Utilisez cette fonction pour recevoir les données de GitHub.
-   - [Guide de démarrage rapide Supabase Functions](https://supabase.com/docs/guides/functions/quickstart)
+2. **Installation des dépendances:**
+   - Exécutez la commande `pip install discord.py` pour installer la bibliothèque Discord.py si ce n'est pas déjà fait.
 
-4. **Déployer sur Supabase:**
-   - Suivez les instructions pour le déploiement.
-   - [Guide de déploiement](https://supabase.com/docs/guides/functions/deploy)
+3. **Exécution du Bot:**
+   - Exécutez `DiscordQuizzBot.py` pour démarrer le bot Discord.
 
-5. **Remplir les Tables:**
-   - Utilisez les données reçues pour remplir vos tables.
-   - Consultez `API docs` et `basic info` dans Supabase.
+## Étape 3: Création du Quiz Discord
+
+Pour réaliser cette étape, nous allons créer un bot Discord qui permet d'envoyer un quizz via un webhook, collecter les réponses des utilisateurs à l'aide de réactions, et afficher les scores à la fin. Suivez ces étapes :
+
+- le bot surveille le canal `quizz` pour détecter quand au moins 2 personnes au bout de X second ont réagi à un message du webhook.
+- Lorsque le seuil est atteint, le bot peut envoyer un autre webhook avec la première question du quizz.
+- Le bot peut ajouter des réactions aux messages du webhook pour représenter les choix de réponses possibles.
+- Les utilisateurs sélectionnent leur réponse en cliquant sur la réaction correspondante.
+- Le bot surveille les réactions des utilisateurs et enregistre leurs réponses.
+- Vous pouvez définir un délai (X secondes) pour que les utilisateurs réagissent à chaque question.
+- Une fois que toutes les questions ont été posées, le bot peut calculer les scores en fonction des réponses correctes et les afficher à la fin du quizz en utilisant un autre webhook.
+- Le bot peut également annoncer le gagnant et clôturer le quizz.
+
+## Bonus:
+
+Le bot peut etre capable davoir des parametre, des score different en fonction des question des groupe etc, et meme denvoyer les resultat sur supabase pour les stocker definitivement.
