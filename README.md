@@ -1,7 +1,3 @@
-Pour intégrer l'information sur le canal Discord dans le projet Markdown :
-
----
-
 # Initiation aux Webhooks
 
 ## Step 1: Webhook sur Discord
